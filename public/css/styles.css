@@ -4,3 +4,255 @@
 *:after {
   box-sizing: border-box;
 }
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  background-image: none;
+}
+
+#wrapper {
+  background-color: #ffffff;
+  margin: 0 auto;
+}
+
+/*--------------- HEADER Styles --------------*/
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 1rem;
+}
+#top-header a {
+  text-decoration: none;
+  color: #000000;
+}
+
+#top-header a:visited {
+  text-decoration: none;
+  color: #000000;
+}
+
+.siteName {
+  font-size: 25px;
+  font-weight:700;
+}
+
+#tools a:hover {
+  text-decoration: underline;
+}
+
+/* ------ NAVIGATION styles -----------*/
+nav ul{
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  font-size: 18px;
+  padding: 1rem .5rem;
+  background-color: #000000;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #000000;
+}
+
+nav a:visited {
+  color: #ffffff;
+}
+
+
+/* ------ Hero section styles -----------*/
+.hero {
+  background-image: url('/images/vehicles/delorean.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 70%;
+  margin: 1rem 0rem;
+}
+
+.hero {
+  margin: 1rem 0rem;
+}
+
+.hero h2 {
+  font-size: 20px;
+}
+
+.hero h3 {
+  font-size: 18px;
+  color: #05afd3;
+}
+
+.hero p {
+  font-size: 16px;
+  color: #05afd3;
+}
+
+.hero div {
+  padding: 1rem 1.5rem;
+  width: 200px;
+  background: rgba(255, 255, 255, 0.801);
+}
+
+.hero button {
+  background-color: #05afd3;
+  border: none;
+  padding: .5rem 1rem;
+  color: #000000;
+  font-size: 17px;
+}
+
+.hero button:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* ------ Upgrade & Reviews section styles -----------*/
+
+.upgrade-review {
+  display: grid;
+  margin: 1rem 2rem;
+  grid-template-rows: .5fr 1fr;
+  grid-gap: 0px;
+}
+
+/*Upgrade*/
+.upgrad-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.upgrad-grid div a {
+  display: block;
+  color: #000000;
+  text-align: center;
+  font-size: 16px;
+}
+
+.upgrad-each {
+  margin-top: 1rem;
+}
+
+.img-container{
+  min-height: 100px;
+  border: 1.5px solid #000000;
+  text-align: center;
+  width: 90%;
+  padding-top: 1rem;
+  background-color: #05afd3;
+  margin-bottom: .5rem;
+}
+
+/*Reviews*/
+.review-section {
+  grid-row: 1/2;
+}
+
+.review-section li{
+  padding: .5rem 0;
+  font-size: 16px;
+}
+
+.review-section ul {
+  padding: 1rem;
+}
+
+/* ------ Footer styles -----------*/
+footer {
+  margin: 0 2rem;
+  margin-top: 2.5rem;
+}
+
+
+/* ------ MEDIA QUERIES -----------*/
+@media screen and (min-width: 500px) {
+  body{
+    background-image: url('/images/site/small_check.jpg');
+  }
+
+  #wrapper {
+    max-width: 1000px;
+    border: 5px solid #05afd3;
+    border-radius: 15px;
+  }
+
+  /*--------------- HEADER Styles --------------*/
+  #top-header {
+    margin: 1.5rem 2rem;
+  }
+
+  .siteName{
+    font-size: 35px;
+  }
+
+  /* ------ NAVIGATION styles -----------*/
+  nav ul{
+    width: 95%;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+  /* ------ Hero section styles -----------*/
+  .hero {
+    background-size: contain;
+  }
+
+  .hero {
+    margin: 1rem 2rem;
+  }
+
+  .hero h2 {
+    font-size: 25px;
+  }
+
+  .hero h3 {
+    font-size: 22px;
+  }
+
+  .hero p {
+    font-size: 19px;
+  }
+
+  .hero div {
+    width: 250px;
+    margin-left: 3rem;
+  }
+
+  .hero button {
+    padding: .5rem 2rem;
+    font-size: 18px;
+  }
+
+
+/* ------ Upgrade & Reviews section styles -----------*/
+
+.upgrade-review {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: none;
+  grid-gap: 1rem;
+}
+
+/*Upgrade*/
+.upgrad-grid div a {
+  font-size: 18px;
+}
+
+/*Reviews*/
+.review-section {
+  grid-column: 2/3;
+}
+
+.review-section li{
+  padding: 1rem 0;
+  font-size: 18px;
+}
+
+}
