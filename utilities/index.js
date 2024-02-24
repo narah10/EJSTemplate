@@ -58,6 +58,22 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+/* **************************************
+* Build the classification view HTML
+* ************************************ */
+Util.buildInventoryGrid = async function(data){
+  let grid = ''
+  let vehicle = data[0]
+  grid += '<h2>'+ vehicle.inv_make + '</h2>'
+  grid += '<img src="' + (vehicle.inv_thumbnail ? vehicle.inv_thumbnail : '') + '" alt="Image of ' + vehicle.inv_make + ' ' + vehicle.inv_model + ' on CSE Motors" />';
+  grid += '<h3>'+ vehicle.inv_make + vehicle.inv_model + 'Details' + '</h3>'
+  grid += '<p>'+ 'Price:'+ ' ' + '$' + vehicle.inv_price + '</p>'
+  grid += '<p>'+ 'Description:'+ ' ' + vehicle.inv_description + '</p>'
+  grid += '<p>'+ 'Color:'+ ' ' + vehicle.inv_color + '</p>'
+  grid += '<p>'+ 'Miles:'+ ' ' + vehicle.inv_miles + '</p>'
+  return grid
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
