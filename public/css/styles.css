@@ -9,6 +9,10 @@
   font-family: 'Poppins', sans-serif;
 }
 
+main {
+  margin: 0 1rem;
+}
+
 body{
   background-image: none;
 }
@@ -117,7 +121,7 @@ nav a:visited {
 
 .upgrade-review {
   display: grid;
-  margin: 1rem 2rem;
+  margin: 1rem .5rem;
   grid-template-rows: .5fr 1fr;
   grid-gap: 0px;
 }
@@ -163,6 +167,47 @@ nav a:visited {
   padding: 1rem;
 }
 
+/* ------ Inventory styles -----------*/
+#inv-display {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-column-gap: 1rem;
+}
+
+#inv-display li {
+list-style-type: none;
+border: 1px solid #000000;
+border-radius: 10px;
+text-align: center;
+min-height: 300px;
+}
+
+/* ------ Inventory DETAILS styles -----------*/
+
+#vehicle-details {
+  display: grid;
+  grid-template-rows: .5fr 1fr;
+  min-height: 470px;
+}
+
+#vehicle-details img {
+  width: 100%;
+}
+
+#vehicle-details span {
+  font-weight: bold;
+}
+
+#vehicle-details p {
+  margin: 1rem 0;
+  padding: .5rem 0;
+}
+
+#vehicle-details .background {
+  background-color: #d4d4d46c;
+}
+
+
 /* ------ Footer styles -----------*/
 footer {
   margin: 0 2rem;
@@ -170,8 +215,13 @@ footer {
 }
 
 
-/* ------ MEDIA QUERIES -----------*/
-@media screen and (min-width: 500px) {
+/* ------ MEDIA QUERIES LARGE-----------*/
+@media screen and (min-width: 800px) {
+  main {
+    max-width: 900px;
+    margin: 0 2rem;
+  }
+
   body{
     background-image: url('/images/site/small_check.jpg');
   }
@@ -206,7 +256,7 @@ footer {
   }
 
   .hero {
-    margin: 1rem 2rem;
+    margin: 1rem .5rem;
   }
 
   .hero h2 {
@@ -253,6 +303,18 @@ footer {
 .review-section li{
   padding: 1rem 0;
   font-size: 18px;
+}
+
+/* ------ Inventory DETAILS styles -----------*/
+
+#vehicle-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: none;
+}
+
+#vehicle-details img {
+  width: 400px;
 }
 
 }

@@ -58,4 +58,35 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+/* **************************************
+* Build the classification view HTML
+* ************************************ */
+Util.buildInventoryGrid = async function(data){
+  let grid = ''
+  let vehicle = data[0]
+  grid += '<div id="vehicle-details">'
+  grid += `<img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model} on CSE Motors" />`
+  grid += '<div>'
+  grid += `<h3>${vehicle.inv_make} ${vehicle.inv_model} Details</h3>`
+  grid += `<p class="background"><span>Price</span>: <span>$${new Intl.NumberFormat('en-US').format(vehicle.inv_price)}</span></p>`;
+  grid += `<p><span>Description</span>: ${vehicle.inv_description}</p>`
+  grid += `<p class="background"><span>Color</span>: ${vehicle.inv_color}</p>`
+  grid += `<p><span>Miles</span>: ${new Intl.NumberFormat('en-US').format(vehicle.inv_miles)}</p>`
+  grid += '</div>'
+  grid += '</div>'
+  return grid
+}
+
+/* ****************************************
+ * Middleware For Handling Errors
+ * Wrap other function in this for 
+ * General Error Handling
+ **************************************** */
+Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+
+Util.handleIntentionalErrors = fn => (req, res, next) => 
+  Promise.resolve(fn(req, res, next)).catch(err => {
+    next({ status: 500, message: err.message });
+});
+
 module.exports = Util
