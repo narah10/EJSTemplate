@@ -170,8 +170,9 @@ nav a:visited {
 /* ------ Inventory styles -----------*/
 #inv-display {
 display: grid;
-grid-template-columns: 1fr 1fr 1fr;
+grid-template-columns: 1fr;
 grid-column-gap: 1rem;
+grid-row-gap: 1rem;
 }
 
 #inv-display li {
@@ -181,7 +182,6 @@ border-radius: 10px;
 text-align: center;
 min-height: 300px;
 }
-
 /* ------ Inventory DETAILS styles -----------*/
 
 #vehicle-details {
@@ -220,6 +220,7 @@ footer {
   main {
     max-width: 900px;
     margin: 0 2rem;
+    min-height: 600px;
   }
 
   body{
@@ -306,6 +307,10 @@ footer {
 }
 
 /* ------ Inventory DETAILS styles -----------*/
+
+#inv-display {
+  grid-template-columns: 1fr 1fr 1fr;
+  }  
 
 #vehicle-details {
   display: grid;
