@@ -98,7 +98,7 @@ nav a:visited {
   color: #05afd3;
 }
 
-.hero div {
+.hero section {
   padding: 1rem 1.5rem;
   width: 200px;
   background: rgba(255, 255, 255, 0.801);
@@ -117,6 +117,13 @@ nav a:visited {
   color: #ffffff;
 }
 
+.notice {
+  background-color: rgba(255, 242, 123, 0.543);
+  padding: 15px 35px;
+  border: 1px solid #ffea3294;
+  font-weight: bold;
+
+}
 /* ------ Upgrade & Reviews section styles -----------*/
 
 .upgrade-review {
@@ -207,6 +214,88 @@ min-height: 300px;
   background-color: #d4d4d46c;
 }
 
+/* ------ LOGIN  -----------*/
+#loginBox {
+  background-color: #30465d;
+  max-width: 400px;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  font-size: 17px;
+}
+
+#loginForm p label{
+  display: block;
+}
+
+#loginForm p input{
+  width: 100%;
+}
+
+#loginForm button {
+  background-color: #ffffff;
+  border: none;
+  padding: .3rem 1rem;
+  color: #000000;
+  font-size: 17px;
+}
+
+#loginBox a {
+  color: #ffffff;
+}
+
+/* ------ REGISTER  -----------*/
+#registerBox {
+  background-color: #30465d;
+  max-width: 400px;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  font-size: 17px;
+}
+
+#registerBox p label{
+  display: block;
+}
+
+#registerBox p input{
+  width: 100%;
+}
+
+#registerBox #showPassword {
+  display: block;
+  font-size: 13px;
+  margin-top: .2rem;
+}
+#registerBox button {
+  background-color: #ffffff;
+  border: none;
+  padding: .3rem 1rem;
+  color: #000000;
+  font-size: 17px;
+}
+
+#registerForm input:focus {
+  outline: none;
+}
+
+#loginForm input:focus {
+  outline: none;
+}
+
+#registerForm input:focus:invalid {
+  border: 2px solid red;
+ }
+
+#loginForm input:focus:invalid {
+  border: 2px solid red;
+}
+
+#registerForm input:required:valid {
+  border: 2px solid green;
+}
+
+#loginForm input:required:valid {
+  border: 2px solid green;
+}
 
 /* ------ Footer styles -----------*/
 footer {
@@ -272,7 +361,7 @@ footer {
     font-size: 19px;
   }
 
-  .hero div {
+  .hero section {
     width: 250px;
     margin-left: 3rem;
   }
