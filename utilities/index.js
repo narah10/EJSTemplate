@@ -87,9 +87,7 @@ Util.buildClassificationDropDown = async function(classification_id = null){
   dropdown += "<option>Choose a Classification</option>"
   data.rows.forEach((row) => {
     dropdown += '<option value="' + row.classification_id + '"'
-    if (
-      classification_id != null && row.classification_id == classification_id
-    ) {
+    if (classification_id != null && row.classification_id == classification_id) {
       dropdown += " selected "
     }
     dropdown += ">" + row.classification_name + "</option>"
