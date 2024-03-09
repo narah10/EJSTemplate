@@ -11,7 +11,7 @@ validate.registerClassificationRules = () => {
         body("classification_name")
         .trim()
         .isLength({min: 1})
-        .matches(/^[a-zA-Z0-9]+$/)
+        .matches(/^[a-zA-Z]+$/)
         .withMessage("A valid classification name is required.")
         .custom(async (classification_name) => {
             const classificationExists = await invModel.checkClassifications(classification_name)

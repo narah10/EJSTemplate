@@ -42,8 +42,8 @@ invCont.registerClassification = async function(req, res) {
       "notice",
       `Congratulations, you\'ve registered ${classification_name}.`
     )
-    res.status(201).render("inventory/management", {
-      title: "Vehicle Management",
+    res.status(201).render("inventory/add-classification", {
+      title: "Add Classification",
       nav,
       errors: null,
     })

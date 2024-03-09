@@ -297,6 +297,41 @@ min-height: 300px;
   border: 2px solid green;
 }
 
+/* ------ Management View styles -----------*/
+#management-view ul{
+list-style: none;
+}
+
+#classificationBox {
+  background-color: #30465d;
+  max-width: 400px;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  font-size: 17px;
+}
+
+#classificationBox p label{
+  display: block;
+}
+
+#classificationBox p input{
+  width: 100%;
+}
+
+
+#classificationForm input:focus {
+  outline: none;
+}
+
+#classificationForm input:focus:invalid {
+  border: 2px solid red;
+ }
+
+#classificationForm input:required:valid {
+  border: 2px solid green;
+}
+
+
 /* ------ Footer styles -----------*/
 footer {
   margin: 0 2rem;
