@@ -13,11 +13,11 @@
         </p>        
         <p>
             <label for="make">Make: </label>
-            <input type="text" name="inv_make" id="inv_make" value="<%= locals.inv_make %>" required>
+            <input placeholder="Min of 3 characters" type="text" name="inv_make" id="inv_make" value="<%= locals.inv_make %>" required>
         </p>        
         <p>
             <label for="model">Model: </label>
-            <input type="text" name="inv_model" id="inv_model" value="<%= locals.inv_model %>" required>
+            <input placeholder="Min of 3 characters" type="text" name="inv_model" id="inv_model" value="<%= locals.inv_model %>" required>
         </p>  
         <p>
             <label for="description">Description: </label>
@@ -25,23 +25,23 @@
         </p>  
         <p>
             <label for="image">Image Path: </label>
-            <input type="text" name="inv_image" placeholder="/images/vehicles/no-image.png" id="inv_image" value="<%= locals.inv_image %>" required>
+            <input type="text" name="inv_image" placeholder="/images/vehicles/no-image.png" id="inv_image" value="/images/vehicles/no-image.png" required>
         </p>  
         <p>
             <label for="thumbnail">Thumbnail Path: </label>
-            <input type="text" name="inv_thumbnail" placeholder="/images/vehicles/no-image.png" id="inv_thumbnail" value="<%= locals.inv_thumbnail %>" required>
+            <input type="text" name="inv_thumbnail" placeholder="/images/vehicles/no-image.png" id="inv_thumbnail" value="/images/vehicles/no-image.png" required>
         </p> 
         <p>
             <label for="price">Price: </label>
-            <input type="number" name="inv_price" id="inv_price" value="<%= locals.inv_price %>" required>
+            <input type="number" placeholder="Decimal or Integer" name="inv_price" id="inv_price" value="<%= locals.inv_price %>" required>
         </p>  
         <p>
             <label for="year">Year: </label>
-            <input type="number" name="inv_year" id="inv_year" value="<%= locals.inv_year %>" required>
+            <input type="number" placeholder="4-digit year" name="inv_year" id="inv_year" value="<%= locals.inv_year %>" required>
         </p>  
         <p>
             <label for="miles">Miles: </label>
-            <input type="number" name="inv_miles" id="inv_miles" value="<%= locals.inv_miles %>" required>
+            <input type="number" name="inv_miles" placeholder="digit only" id="inv_miles" value="<%= locals.inv_miles %>" required>
         </p>  
         <p>
             <label for="color">Color: </label>
