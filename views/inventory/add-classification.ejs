@@ -1,0 +1,25 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+} %>
+
+<%- messages() %>
+
+<div id="classificationBox">
+    <form id="classificationForm" action="/inv/send-classification" method="post">
+        <p>        
+            <i style="font-size: 12px;">NAME MUST BE ALPHABETIC CHARACTERS ONLY.</i>
+        </p>
+        <div>
+            <p>
+                <label for="name">Classification Name: </label>
+                <input type="email" name="classification_name" id="classification_name" value="<%= locals.classification_name %>" required>
+            </p>
+            <p>        
+                <i style="font-size: 12px;">NAME MUST BE ALPHABETIC CHARACTERS ONLY.</i>
+            </p>
+            <button type="submit">Add Classification</button>
+        </div>
+    </form>
+</div>
