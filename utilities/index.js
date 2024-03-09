@@ -77,6 +77,22 @@ Util.buildInventoryGrid = async function(data){
   return grid
 }
 
+
+/* **************************************
+* Build the classification drop down
+* ************************************ */
+Util.buildClassificationDropDown = async function(){
+  let data = await invModel.getClassifications()
+  let classificationOptions = '<select name="classification">' 
+  classificationOptions+= '<option>Choose a Classification</option>'
+  data.rows.forEach((row) => {
+    classificationOptions +=
+      `<option value="${row.classification_id}">${row.classification_name}</option>`;
+  });
+  classificationOptions+= '</select>'
+  return classificationOptions;
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 

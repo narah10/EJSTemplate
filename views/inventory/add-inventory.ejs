@@ -4,4 +4,49 @@
       res.redirect('/')
 } %>
 
-<div>Hello</div>
+<div id="inventoryBox">
+    <p>All fields are required</p>
+    <form id="inventoryForm" action="/inv/add-inventory" method="post">
+        <p>
+            <label for="classification">Classification: </label>
+            <%- locals.dropdown %>
+        </p>        
+        <p>
+            <label for="make">Make: </label>
+            <input type="text" name="inv_make" id="inv_make" value="<%= locals.inv_make %>" required>
+        </p>        
+        <p>
+            <label for="model">Model: </label>
+            <input type="text" name="inv_model" id="inv_model" value="<%= locals.inv_model %>" required>
+        </p>  
+        <p>
+            <label for="description">Description: </label>
+            <textarea name="inv_description" id="inv_description" required><%= locals.inv_description %></textarea>
+        </p>  
+        <p>
+            <label for="image">Image Path: </label>
+            <input type="text" name="inv_image" placeholder="/images/vehicles/no-image.png" id="inv_image" value="<%= locals.inv_image %>" required>
+        </p>  
+        <p>
+            <label for="thumbnail">Thumbnail Path: </label>
+            <input type="text" name="inv_thumbnail" placeholder="/images/vehicles/no-image.png" id="inv_thumbnail" value="<%= locals.inv_thumbnail %>" required>
+        </p> 
+        <p>
+            <label for="price">Price: </label>
+            <input type="number" name="inv_price" id="inv_price" value="<%= locals.inv_price %>" required>
+        </p>  
+        <p>
+            <label for="year">Year: </label>
+            <input type="number" name="inv_year" id="inv_year" value="<%= locals.inv_year %>" required>
+        </p>  
+        <p>
+            <label for="miles">Miles: </label>
+            <input type="number" name="inv_miles" id="inv_miles" value="<%= locals.inv_miles %>" required>
+        </p>  
+        <p>
+            <label for="color">Color: </label>
+            <input type="text" name="inv_color" id="inv_color" value="<%= locals.inv_color %>" required>
+        </p>   
+        <button type="submit">Add Vehicle</button>
+    </form>
+</div>
