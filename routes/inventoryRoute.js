@@ -9,7 +9,7 @@ const managementValidate = require("../utilities/management-validation")
 router.get("/", utilities.handleErrors(invController.buildInvView))
 router.get("/add-classification", utilities.handleErrors(invController.buildAddClassView))
 //Process the added classification name
-router.post("/send-classification", 
+router.post("/add-classification", 
 managementValidate.registerClassificationRules(),
 managementValidate.checkClassificationData,
 utilities.handleErrors(invController.registerClassification))
