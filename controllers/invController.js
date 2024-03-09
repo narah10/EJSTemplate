@@ -32,22 +32,23 @@ invCont.buildAddClassView = async function(req, res, next){
  * ************************** */
 
 invCont.registerClassification = async function(req, res) {
-  let nav = await utilities.getNav()
   const { classification_name } = req.body
   const classificationResult = await invModel.registerClassification(
     classification_name
     )
   if (classificationResult) {
+    let nav = await utilities.getNav()
     req.flash(
       "notice",
       `Congratulations, you\'ve registered ${classification_name}.`
     )
-    res.status(201).render("inventory/add-classification", {
-      title: "Add Classification",
+    res.status(201).render("inventory/management", {
+      title: "Vehicle Management",
       nav,
       errors: null,
     })
   } else {
+    let nav = await utilities.getNav()
     req.flash("notice", "Sorry, the registration failed.")
     res.status(501).render("inventory/add-classification", {
       title: "Add Classification",
@@ -55,6 +56,18 @@ invCont.registerClassification = async function(req, res) {
       errors: null,
     })
   }
+}
+
+/* ***************************
+ *  Build Add Inventory View
+ * ************************** */
+invCont.buildAddInvView = async function(req, res, next){
+  let nav = await utilities.getNav()
+  res.render("inventory/add-inventory", {
+    title: "Add Inventory",
+    nav,
+    errors: null,
+  })
 }
 
 

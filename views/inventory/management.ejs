@@ -4,12 +4,20 @@
       res.redirect('/')
 } %>
 
-<%# messages() %>
+<%- messages() %>
+
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
 
 <div id="management-view">
     <ul>
         <li><a href="/inv/add-classification">Add New Classification</a></li>
-        <li><a href="">Add New Vehicle</a></li>
+        <li><a href="/inv/add-inventory">Add New Vehicle</a></li>
     </ul>
 </div>
 

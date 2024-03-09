@@ -14,6 +14,9 @@ managementValidate.registerClassificationRules(),
 managementValidate.checkClassificationData,
 utilities.handleErrors(invController.registerClassification))
 
+//Route to build add-inventory view
+router.get("/add-inventory", invController.buildAddInvView)
+
 router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
 router.get("/detail/:invId", utilities.handleErrors(invController.buildByInventoryId))
 
