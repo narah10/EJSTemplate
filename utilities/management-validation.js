@@ -85,19 +85,20 @@ validate.registerInventoryRules = () => {
   .isNumeric({ no_symbols: true })
   .withMessage("Vehicle Price has to be a Decimal or Digits"),
 
-body("inv_year")
+  body("inv_year")
   .trim()
   .isLength({ min: 4, max: 4 })
   .withMessage("The vehicle year needs to be a 4-digit year")
   .isInt({ min: 1900, max: new Date().getFullYear() })
   .withMessage("Invalid vehicle year"),
 
-body("inv_miles")
+  body("inv_miles")
   .trim()
   .isLength({ min: 1 })
   .withMessage("Add the vehicle miles.")
   .isNumeric({ no_symbols: true })
   .withMessage("The vehicle miles can only be digits"),
+
   body("inv_color")
   .trim()
   .isLength({ min: 1 })
@@ -119,7 +120,8 @@ validate.checkInventoryData = async (req, res, next) => {
       title: "Add Inventory",
       nav,
       classification_id, 
-      inv_make, inv_model, 
+      inv_make, 
+      inv_model, 
       inv_description, 
       inv_image, 
       inv_thumbnail, 

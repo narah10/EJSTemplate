@@ -302,32 +302,31 @@ min-height: 300px;
 list-style: none;
 }
 
-#classificationBox {
+#classificationBox, #inventoryBox {
   background-color: #30465d;
-  max-width: 400px;
+  max-width: 500px;
   color: #ffffff;
   padding: 1rem 2rem;
   font-size: 17px;
 }
 
-#classificationBox p label{
+#classificationBox p label, #inventoryBox p label{
   display: block;
 }
 
-#classificationBox p input{
+#classificationBox p input, #inventoryBox p input, #inventoryBox textarea{
   width: 100%;
 }
 
-
-#classificationForm input:focus {
+#classificationForm input:focus, #inventoryForm input:focus{
   outline: none;
 }
 
-#classificationForm input:focus:invalid {
+#classificationForm input:focus:invalid, #inventoryForm input:focus:invalid{
   border: 2px solid red;
  }
 
-#classificationForm input:required:valid {
+#classificationForm input:required:valid, #inventoryForm input:required:valid{
   border: 2px solid green;
 }
 
