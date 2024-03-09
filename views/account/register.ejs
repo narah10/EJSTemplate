@@ -1,0 +1,55 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+} %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+<div id="registerBox">
+    <p>All fields are required</p>
+    <form id="registerForm" action="/account/register" method="post">
+        <p>
+            <label for="firstname">First Name: </label>
+            <input type="text" name="account_firstname" id="firstname" value="<%= locals.account_firstname %>" required>
+        </p>        
+        <p>
+            <label for="lastname">Last Name: </label>
+            <input type="text" name="account_lastname" id="lastname" value="<%= locals.account_lastname %>" required>
+        </p>        
+        <p>
+            <label for="email">Email: </label>
+            <input type="email" placeholder="Enter a valid email address" name="account_email" id="email" value="<%= locals.account_email %>" required>
+        </p>
+        <p>        
+            <label for="password">Password: </label>
+            <input type="password" name="account_password" id="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required >
+            <!-- <span id="showPassword">Show Password</span> -->
+            <i style="font-size: 12px;">Password must have a minimum of 12 characters in length, contain at least 1 capital letter, contain at least 1 number and contain at least 1 special character.</i>
+        </p>
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<script>
+    const passwordBtn = document.getElementById('showPassword')
+    passwordBtn.addEventListener('click', function() {
+        var passwordInput = document.getElementById('password');
+        const type = passwordInput.getAttribute("type")
+        if (type == "password") {
+            passwordInput.setAttribute("type", "text");
+            passwordBtn.innerHTML("Hide Password")
+        } else {
+            passwordInput.setAttribute("type", "password");
+            passwordBtn.innerHTML("Show Password")
+        }
+    });
+</script>
