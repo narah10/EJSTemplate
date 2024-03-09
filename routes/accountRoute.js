@@ -15,7 +15,6 @@ router.post(
       res.status(200).send('login process')
     }
   )
-  
 router.get("/register", utilities.handleErrors(accountController.buildRegister));
 // Process the registration data
 router.post(

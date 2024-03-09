@@ -6,15 +6,23 @@
 
 <%- messages() %>
 
-<div id="classificationBox">
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+  <div id="classificationBox">
     <form id="classificationForm" action="/inv/send-classification" method="post">
-        <p>        
-            <i style="font-size: 12px;">NAME MUST BE ALPHABETIC CHARACTERS ONLY.</i>
-        </p>
         <div>
+            <p>        
+                <i style="font-size: 12px;">ALL FIELDS ARE REQUIRED.</i>
+            </p>
             <p>
-                <label for="name">Classification Name: </label>
-                <input type="email" name="classification_name" id="classification_name" value="<%= locals.classification_name %>" required>
+                <label for="classification_name">Classification Name: </label>
+                <input type="text" name="classification_name" id="classification_name" pattern="[a-zA-Z0-9]+" title="Name must be alphanumeric characters only" value="<%= locals.classification_name %>" required>
             </p>
             <p>        
                 <i style="font-size: 12px;">NAME MUST BE ALPHABETIC CHARACTERS ONLY.</i>

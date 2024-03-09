@@ -20,10 +20,10 @@ invCont.buildInvView = async function(req, res, next){
  * ************************** */
 invCont.buildAddClassView = async function(req, res, next){
   let nav = await utilities.getNav()
-  res.render("./inventory/add-classification", {
+  res.render("inventory/add-classification", {
     title: "Add Classification",
     nav,
-    // errors: null,
+    errors: null,
   })
 }
 

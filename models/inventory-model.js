@@ -8,6 +8,20 @@ async function getClassifications(){
 }
 
 /* ***************************
+ *  Check all classification data
+ * ************************** */
+async function checkClassifications(classification_name){
+  try {
+    const sql = "SELECT * FROM classification WHERE classification_name = $1"
+    const name = await pool.query(sql, [classification_name])
+    return name.rowCount
+  } catch (error) {
+    return error.message
+  }
+}
+
+
+/* ***************************
  *  Get all inventory items and classification_name by classification_id
  * ************************** */
 async function getInventoryByClassificationId(classification_id) {
@@ -57,4 +71,4 @@ async function registerClassification(classification_name){
 }
 
 
-module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInventoryId, registerClassification};
+module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInventoryId, registerClassification, checkClassifications};
