@@ -25,4 +25,16 @@ invController.registerInventory)
 router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
 router.get("/detail/:invId", utilities.handleErrors(invController.buildByInventoryId))
 
+router.get("/getInventory/:classification_id",
+ utilities.handleErrors(invController.getInventoryJSON));
+
+router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryItemView));
+router.post("/update",
+managementValidate.registerInventoryRules(),
+managementValidate.checkUpdateData,
+utilities.handleErrors(invController.updateInventory));
+
+router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteInventoryItemView));
+router.post("/delete", utilities.handleErrors(invController.deleteInventory));
+
 module.exports = router;
