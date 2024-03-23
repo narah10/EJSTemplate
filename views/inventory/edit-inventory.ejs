@@ -16,10 +16,10 @@
 
 <div id="inventoryBox">
     <p>All fields are required</p>
-    <form class="inventoryForm" action="/inv/add-inventory" method="post">
+    <form id="updateForm" class="inventoryForm" action="/inv/update" method="post">
         <p>
             <label for="classification_id">Classification: </label>
-            <%- locals.dropdown %>
+            <%- classificationSelect %>
         </p>        
         <p>
             <label for="inv_make">Make: </label>
@@ -57,6 +57,11 @@
             <label for="inv_color">Color: </label>
             <input type="text" name="inv_color" id="inv_color" value="<%= locals.inv_color %>" required>
         </p>   
-        <button type="submit">Add Vehicle</button>
+        <button disabled type="submit">Edit Vehicle</button>
+        <input type="hidden" name="inv_id"
+        <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+        <% } %>>
     </form>
 </div>
+
+<script src="../../js/inv-update.js"></script>

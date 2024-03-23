@@ -318,18 +318,42 @@ list-style: none;
   width: 100%;
 }
 
-#classificationForm input:focus, #inventoryForm input:focus{
+#classificationForm input:focus, .inventoryForm input:focus{
   outline: none;
 }
 
-#classificationForm input:focus:invalid, #inventoryForm input:focus:invalid{
+#classificationForm input:focus:invalid, .inventoryForm input:focus:invalid{
   border: 2px solid red;
  }
 
-#classificationForm input:required:valid, #inventoryForm input:required:valid{
+#classificationForm input:required:valid, .inventoryForm input:required:valid{
   border: 2px solid green;
 }
 
+
+/* ------ Management Inventory styles -----------*/
+#inventoryDisplay{
+  margin: 1rem;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#inventoryDisplay td, #inventoryDisplay th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#inventoryDisplay tr:nth-child(even){background-color: #f2f2f2;}
+
+#inventoryDisplay tr:hover {background-color: #ddd;}
+
+#inventoryDisplay th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #05afd3;
+  color: white;
+} 
 
 /* ------ Footer styles -----------*/
 footer {
