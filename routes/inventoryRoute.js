@@ -6,8 +6,8 @@ const utilities = require('../utilities/index')
 const managementValidate = require("../utilities/management-validation")
 
 // Route to build inventory by classification view
-router.get("/", utilities.handleErrors(invController.buildInvView))
-router.get("/add-classification", utilities.handleErrors(invController.buildAddClassView))
+router.get("/", utilities.checkLoginAccountType, utilities.handleErrors(invController.buildInvView))
+router.get("/add-classification", utilities.checkLoginAccountType, utilities.handleErrors(invController.buildAddClassView))
 //Process the added classification name
 router.post("/add-classification", 
 managementValidate.registerClassificationRules(),
@@ -15,7 +15,7 @@ managementValidate.checkClassificationData,
 utilities.handleErrors(invController.registerClassification))
 
 //Route to build add-inventory view
-router.get("/add-inventory", invController.buildAddInvView)
+router.get("/add-inventory", utilities.checkLoginAccountType, invController.buildAddInvView)
 //Process the added classification name
 router.post("/add-inventory", 
 managementValidate.registerInventoryRules(),
@@ -28,13 +28,13 @@ router.get("/detail/:invId", utilities.handleErrors(invController.buildByInvento
 router.get("/getInventory/:classification_id",
  utilities.handleErrors(invController.getInventoryJSON));
 
-router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryItemView));
+router.get("/edit/:inv_id", utilities.checkLoginAccountType, utilities.handleErrors(invController.editInventoryItemView));
 router.post("/update",
 managementValidate.registerInventoryRules(),
 managementValidate.checkUpdateData,
 utilities.handleErrors(invController.updateInventory));
 
-router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteInventoryItemView));
+router.get("/delete/:inv_id", utilities.checkLoginAccountType, utilities.handleErrors(invController.deleteInventoryItemView));
 router.post("/delete", utilities.handleErrors(invController.deleteInventory));
 
 module.exports = router;
