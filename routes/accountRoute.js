@@ -33,7 +33,17 @@ router.post(
 router.get("/logout", utilities.handleErrors(accountController.accountLogout));
 
 //update account 
-router.get("/edit/:account_id", accountController.accountBuildEditView);
-router.post("/update", accountController.accountUpdate);
+router.get("/edit/:account_id", 
+utilities.checkLogin, 
+utilities.handleErrors(accountController.accountBuildEditView));
 
+router.post("/update",
+regValidate.updateRules(),
+regValidate.checkUpdateAccountInfo,
+utilities.handleErrors(accountController.accountUpdate));
+
+router.post("/updatePassword",
+regValidate.updatePasswordRules(),
+regValidate.checkUpdatePasswordInfo,
+utilities.handleErrors(accountController.accountPasswordUpdate));
 module.exports = router;

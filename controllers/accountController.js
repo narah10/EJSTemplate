@@ -159,42 +159,68 @@ async function accountBuildEditView (req, res, next) {
 }
 
 /* ***************************
- *  Edit Account
- * ************************** */
+*  Edit Account
+* ************************** */
 async function accountUpdate (req, res, next) {
-  let nav = await utilities.getNav();
-    const { 
+let nav = await utilities.getNav();
+  const { 
+    account_id,
+    account_firstname,
+    account_lastname,
+    account_email
+  } = req.body
+  const updateResult = await accountModel.updateAccount(
+    account_id,
+    account_firstname,
+    account_lastname,
+    account_email
+  )
+  if (updateResult) {
+    const accountData = await accountModel.getAccountById(account_id);
+    const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
+    res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
+    req.flash("notice", "The account was successfully updated.");
+    res.redirect("/account/");
+  } else {
+    req.flash("notice", "Sorry, the account was not successfully updated.");
+    res.status(501).render("./account/edit-account", {
+      title: "Edit Account",
+      nav,
+      errors: null,
       account_id,
       account_firstname,
       account_lastname,
-      account_email
-    } = req.body
-    console.log(`**********************updaDateAccountControllerAccountId${account_id}`)
-    const updateResult = await accountModel.updateAccount(
-      account_id,
-      account_firstname,
-      account_lastname,
-      account_email
-    )
-    console.log(`**********************updaDateAccountController${updateResult}`)
-    if (updateResult) {
-      const accountData = await accountModel.getAccountById(account_id);
-      const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
-      res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
-      req.flash("notice", "The account was successfully updated.");
-      res.redirect("/account/");
-    } else {
-      req.flash("notice", "Sorry, the account was not successfully updated.");
-      res.status(501).render("./account/edit-account", {
-        title: "Edit Account",
-        nav,
-        errors: null,
-        account_id,
-        account_firstname,
-        account_lastname,
-        account_email,
-      });
-    }
+      account_email,
+    });
   }
+}
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccount, accountLogout, accountBuildEditView, accountUpdate }
+async function accountPasswordUpdate (req, res, next) {
+let nav = await utilities.getNav();
+  const { 
+    account_id,
+    account_password
+  } = req.body
+  const updateResult = await accountModel.updatePassword(
+    account_id,
+    account_password
+  )
+  if (updateResult) {
+    const accountData = await accountModel.getAccountById(account_id);
+    const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
+    res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
+    req.flash("notice", "The password was successfully updated.");
+    res.redirect("/account/");
+  } else {
+    req.flash("notice", "Sorry, the password was not successfully updated.");
+    res.status(501).render("./account/edit-account", {
+      title: "Edit Account",
+      nav,
+      errors: null,
+      account_id,
+      account_password
+    });
+  }
+}
+
+module.exports = { accountPasswordUpdate, buildLogin, buildRegister, registerAccount, accountLogin, buildAccount, accountLogout, accountBuildEditView, accountUpdate }

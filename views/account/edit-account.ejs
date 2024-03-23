@@ -38,7 +38,7 @@
     <form id="updatePasswordForm" class="inventoryForm" action="/account/updatePassword" method="post">
         <p>        
             <label for="password">Password: </label>
-            <input type="password" name="account_password" id="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required >
+            <input type="password" name="account_password" id="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" value="<%= locals.account_password %>"required >
             <!-- <span id="showPassword">Show Password</span> -->
             <i style="font-size: 12px;">Password must have a minimum of 12 characters in length, contain at least 1 capital letter, contain at least 1 number and contain at least 1 special character.</i>
         </p>
