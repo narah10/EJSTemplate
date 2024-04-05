@@ -223,4 +223,46 @@ let nav = await utilities.getNav();
   }
 }
 
-module.exports = { accountPasswordUpdate, buildLogin, buildRegister, registerAccount, accountLogin, buildAccount, accountLogout, accountBuildEditView, accountUpdate }
+/* ***************************
+ *  Delete confirmation ACCOUNT view
+ * ************************** */
+async function deleteAccountView (req, res, next) {
+  const account_id = parseInt(req.params.account_id)
+  let nav = await utilities.getNav()
+  const accountData = await accountModel.getAccountById(account_id);
+  
+  res.render("account/delete-confirm", {
+      title: "Delete Account",
+      nav,
+      errors: null,
+      account_id: accountData.account_id})
+}
+
+async function accountDelete(req, res, next){
+  let nav = await utilities.getNav();
+  const {account_id, account_password, account_email} = req.body
+  const deleteAccount = await accountModel.deleteAccount(account_id)
+  if(deleteAccount) {
+    try {
+      res.clearCookie("jwt");
+      req.flash("notice", "You have succesfully deleted your account");
+      return res.redirect('/');
+    } catch (error) {
+      console.error('Account Deletion Error:', error);
+      req.flash('error', 'An error occurred during account deletion. Please try again.');
+      return res.redirect('/');
+    }
+  } else {
+    req.flash("notice", "Sorry, the account deletion failed.")
+    res.status(501).render("account/delete-confirm", {
+      title: "Delete Account",
+      nav,
+      errors: null,
+      account_password,
+      account_email,
+      account_id
+    })
+  }
+}
+
+module.exports = { deleteAccountView, accountPasswordUpdate, buildLogin, buildRegister, registerAccount, accountLogin, buildAccount, accountLogout, accountBuildEditView, accountUpdate, accountDelete }
