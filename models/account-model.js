@@ -103,10 +103,11 @@ async function updatePassword(account_id, account_password) {
 }
 
 /* ***************************
- *  Delete Inventory Data
+ *  Delete Account Data
  * ************************** */
 async function deleteAccount(account_id) {
   try {
+    console.log(`**********************DELETEACCOUNTMODEL${account_id}`);
     const sql = "DELETE FROM public.account WHERE account_id = $1";
     const data = await pool.query(sql, [account_id]);
     return data;

@@ -1,33 +1,37 @@
 <% if (title) { %>
-    <h1><%= title %></h1>
-    <% } else {
-      res.redirect('/')
-} %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %>
 
-<%- messages() %>
+        <%- messages() %>
 
-<% if (errors) { %>
-    <ul class="notice">
-   <% errors.array().forEach(error => { %>
-     <li><%= error.msg %></li>
-  <%  }) %>
-   </ul>
-  <% } %>
+            <% if (errors) { %>
+                <ul class="notice">
+                    <% errors.array().forEach(error=> { %>
+                        <li>
+                            <%= error.msg %>
+                        </li>
+                        <% }) %>
+                </ul>
+                <% } %>
 
-<div id="inventoryBox">
-    <p>The Account Deletion is permanent.</p>
-    <form id="deleteForm" class="inventoryForm" action="/account/delete" method="post"> 
-        <p>
-            <label for="account_email">Confirm Email: </label>
-            <input type="text" name="account_email" id="account_email" value="<%= locals.account_email %>" required>
-        </p>        
-        <p>
-            <label for="account_password">Confirm Password: </label>
-            <input type="text" name="account_password" id="account_password" value="<%= locals.account_password %>" required>
-        </p>  
-        <button type="submit">Delete Account</button>
-        <input type="hidden" name="inv_id"
-        <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
-        <% } %>>
-    </form>
-</div>
+                    <div id="inventoryBox">
+                        <p>The Account Deletion is permanent.</p>
+                        <form id="deleteForm" class="inventoryForm" action="/account/delete" method="post">
+                            <p>
+                                <label for="account_email">Confirm Email: </label>
+                                <input type="text" name="account_email" id="account_email"
+                                    value="<%= locals.account_email %>" required>
+                            </p>
+                            <p>
+                                <label for="account_password">Confirm Password: </label>
+                                <input type="text" name="account_password" id="account_password"
+                                    value="<%= locals.account_password %>" required>
+                            </p>
+                            <button type="submit">Delete Account</button>
+                            <input type="hidden" name="account_id" <% if(locals.account_id) { %> value="<%=
+                                locals.account_id %>"
+                                <% } %>>
+                        </form>
+                    </div>
