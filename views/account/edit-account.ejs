@@ -1,52 +1,64 @@
 <% if (title) { %>
-    <h1><%= title %></h1>
-    <% } else {
-      res.redirect('/')
-} %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %>
 
-<%- messages() %>
+        <%- messages() %>
 
-<% if (errors) { %>
-    <ul class="notice">
-   <% errors.array().forEach(error => { %>
-     <li><%= error.msg %></li>
-  <%  }) %>
-   </ul>
-  <% } %>
+            <% if (errors) { %>
+                <ul class="notice">
+                    <% errors.array().forEach(error=> { %>
+                        <li>
+                            <%= error.msg %>
+                        </li>
+                        <% }) %>
+                </ul>
+                <% } %>
 
-<div id="inventoryBox">
-    <h2>Update Account</h2>
-    <form id="updateAccountForm" class="inventoryForm" action="/account/update" method="post">
-        <p>
-            <label for="firstname">First Name: </label>
-            <input type="text" name="account_firstname" id="firstname" value="<%= locals.account_firstname %>" required>
-        </p>        
-        <p>
-            <label for="lastname">Last Name: </label>
-            <input type="text" name="account_lastname" id="lastname" value="<%= locals.account_lastname %>" required>
-        </p>        
-        <p>
-            <label for="email">Email: </label>
-            <input type="email" placeholder="Enter a valid email address" name="account_email" id="email" value="<%= locals.account_email %>" required>
-        </p>
-        <button type="submit">Edit Account</button>
-        <input type="hidden" name="account_id"
-        <% if(locals.account_id) { %> value="<%= locals.account_id %>"
-        <% } %>>
-    </form>
-    <h2>Update Password</h2>
-    <form id="updatePasswordForm" class="inventoryForm" action="/account/updatePassword" method="post">
-        <p>        
-            <label for="password">Password: </label>
-            <input type="password" name="account_password" id="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" value="<%= locals.account_password %>" required >
-            <!-- <span id="showPassword">Show Password</span> -->
-            <i style="font-size: 12px;">Password must have a minimum of 12 characters in length, contain at least 1 capital letter, contain at least 1 number and contain at least 1 special character.</i>
-        </p>
-        <button type="submit">Edit Password</button>
-        <input type="hidden" name="account_id"
-        <% if(locals.account_id) { %> value="<%= locals.account_id %>"
-        <% } %>>
-    </form>
-</div>
+                    <div id="inventoryBox">
+                        <h2>Update Account</h2>
+                        <form id="updateAccountForm" class="inventoryForm" action="/account/update" method="post">
+                            <p>
+                                <label for="firstname">First Name: </label>
+                                <input type="text" name="account_firstname" id="firstname"
+                                    value="<%= locals.account_firstname %>" required>
+                            </p>
+                            <p>
+                                <label for="lastname">Last Name: </label>
+                                <input type="text" name="account_lastname" id="lastname"
+                                    value="<%= locals.account_lastname %>" required>
+                            </p>
+                            <p>
+                                <label for="email">Email: </label>
+                                <input type="email" placeholder="Enter a valid email address" name="account_email"
+                                    id="email" value="<%= locals.account_email %>" required>
+                            </p>
+                            <button type="submit">Edit Account</button>
+                            <input type="hidden" name="account_id" <% if(locals.account_id) { %> value="<%=
+                                locals.account_id %>"
+                                <% } %>>
+                        </form>
+                        <h2>Update Password</h2>
+                        <form id="updatePasswordForm" class="inventoryForm" action="/account/updatePassword"
+                            method="post">
+                            <p>
+                                <label for="password">Password: </label>
+                                <input type="password" name="account_password" id="password"
+                                    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+                                    value="<%= locals.account_password %>" required>
+                                <!-- <span id="showPassword">Show Password</span> -->
+                                <i style="font-size: 12px;">Password must have a minimum of 12 characters in length,
+                                    contain at least 1 capital letter, contain at least 1 number and contain at least 1
+                                    special character.</i>
+                            </p>
+                            <button type="submit">Edit Password</button>
+                            <input type="hidden" name="account_id" <% if(locals.account_id) { %> value="<%=
+                                locals.account_id %>"
+                                <% } %>>
+                        </form>
+                        <p><a style="color: red;" title="Delete Account"
+                                href="/account/delete/<%= locals.account_id %>">Delete Account</a></p>
+                    </div>
 
-<script src="../../js/inv-update.js"></script>
+                    <script src="../../js/inv-update.js"></script>
