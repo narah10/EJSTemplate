@@ -49,5 +49,6 @@ utilities.handleErrors(accountController.accountPasswordUpdate));
 module.exports = router;
 
 //deleting account
-router.get("/delete/:account_id",utilities.checkLogin, accountController.deleteAccountView)
+router.get("/delete/:account_id", utilities.checkLogin, handleErrors(accountController.deleteAccountView));
+
 router.post("/delete", utilities.handleErrors(accountController.accountDelete));
